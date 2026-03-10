@@ -14,3 +14,22 @@ stripe:
     secret: sk_test_51SnJUJJezRYPJ6F7Hz8dkOthSaM3n3daMwSctFiaro57Y6PRLaUStxIcQjyzGtf62b8JfoSzTPBDQWcISgpGFORA00piYWmbap
   webhook:
     secret: whsec_3f768e901e19b344e2bd8e6a5785553905008c7710dc31b074d7bd36a7eac6db
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: k8s
+  datasource:
+    url: jdbc:postgresql://pgvector.lovable-core.svc.cluster.local:5432/account_db
+    username: account_user
+    password: ${DB_PASSWORD}
+
+
+stripe:
+  api:
+    secret: ${STRIPE_API_KEY}
+  webhook:
+    secret: ${STRIPE_WEBHOOK_SECRET}
